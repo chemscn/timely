@@ -1,18 +1,26 @@
 import React from "react";
-import Chip from "@mui/material/Chip";
-import DeleteIcon from "@mui/icons-material/Delete";
-function App() {
+import { TimeForm } from "./components";
+import { Paper } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    padding: 25,
+  },
+});
+const App = () => {
+  const classes = useStyles();
   return (
     <div className="App">
-      <h1>Timely :)</h1>
-      <Chip
-        color="error"
-        label="Custom delete icon"
-        deleteIcon={<DeleteIcon />}
-        onDelete={() => console.log("delete")}
-      />
+      <Paper className={classes.container} elevation={3}>
+        <h1>Welcome to Timely</h1>
+        <TimeForm />
+      </Paper>
     </div>
   );
-}
+};
 
 export default App;
