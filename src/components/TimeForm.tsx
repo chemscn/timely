@@ -13,14 +13,16 @@ const useStyles = makeStyles({
   },
   box: {
     margin: 25,
+    flex: 0.5,
+    flexDirection: "row",
   },
 });
 
 export const TimeForm = () => {
   const [description, setDescription] = useState<string>("");
   const classes = useStyles();
-  const handleTextInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDescription(event.target.value);
+  const handleTextInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setDescription(event.target.value as string);
   };
   return (
     <>
