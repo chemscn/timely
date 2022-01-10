@@ -4,7 +4,7 @@ export interface ActivityData {
 
 export interface Activity {
 	startTime: Date;
-	endTime: Date;
-	duration: Date;
+	endTime?: Date;
+	duration: number;
 	description: string;
 }
