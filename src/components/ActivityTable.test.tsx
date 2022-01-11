@@ -44,6 +44,13 @@ describe("Activity table component", () => {
     });
     stopButton.at(0).simulate("click");
     expect(durationCell.at(0).text()).toStrictEqual("1");
+    const endTimeCell = component.find('[data-testid="test-endTime-cell"]');
+    expect(new Date(endTimeCell.at(0).text())).toStrictEqual(
+      new Date(
+        new Date(startTimeCell.at(0).text()).getTime() +
+          parseInt(durationCell.at(0).text()) * 1000
+      )
+    );
     component.update();
   });
 });
