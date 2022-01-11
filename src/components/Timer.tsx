@@ -25,11 +25,12 @@ export const Timer = ({ onStop, index }: TimerProps) => {
   }, [isActive, seconds]);
 
   return (
-    <div>
-      {seconds}
+    <>
+      <div data-testid="seconds-display">{seconds}</div>
       <div>
         {isActive && (
           <Button
+            data-testid="stop-button"
             color="error"
             onClick={() => {
               onStop(seconds, index);
@@ -40,6 +41,6 @@ export const Timer = ({ onStop, index }: TimerProps) => {
           </Button>
         )}
       </div>
-    </div>
+    </>
   );
 };
