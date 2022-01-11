@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { ActivityTable } from "./components";
 import { Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { Activity } from "./models";
 
 const useStyles = makeStyles({
   container: {

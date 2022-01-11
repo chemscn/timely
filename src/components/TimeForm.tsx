@@ -7,6 +7,7 @@ import { Activity } from "../models";
 
 interface TimeFormProps {
   onSave: (activity: Activity) => void;
+  onClearStorage: () => void;
 }
 
 const useStyles = makeStyles({
@@ -25,12 +26,15 @@ const useStyles = makeStyles({
   },
 });
 
-export const TimeForm = ({ onSave }: TimeFormProps) => {
+export const TimeForm = ({ onSave, onClearStorage }: TimeFormProps) => {
   const [description, setDescription] = useState<string>("");
   const classes = useStyles();
 
   const handleTextInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setDescription(event.target.value as string);
+    if (event.target.value) {
+      const inputValue = event.target.value as string;
+      setDescription(inputValue);
+    }
   };
 
   const createActivity = (): Activity => {
@@ -43,13 +47,11 @@ export const TimeForm = ({ onSave }: TimeFormProps) => {
     return newActivity;
   };
 
-  const handleClearStorage = () => {
-    localStorage.clear();
-  };
   return (
     <>
       <Box className={classes.box} component="form" autoComplete="off">
         <TextField
+          data-testid="description-input"
           className={classes.textInput}
           required
           id="outlined-required"
@@ -60,15 +62,20 @@ export const TimeForm = ({ onSave }: TimeFormProps) => {
       </Box>
       <div className={classes.button}>
         <Button
+          data-testid="start-activity-button"
           color="success"
           onClick={() => onSave(createActivity())}
-          disabled={description.length === 0}
           variant="contained"
         >
           Start Activity
         </Button>
       </div>
-      <Button color="error" onClick={handleClearStorage} variant="contained">
+      <Button
+        data-testid="clear-storage-button"
+        color="error"
+        onClick={onClearStorage}
+        variant="contained"
+      >
         Clear Storage
       </Button>
     </>
