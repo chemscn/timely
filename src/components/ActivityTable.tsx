@@ -94,7 +94,7 @@ export const ActivityTable = () => {
                 >
                   {activity.startTime.toLocaleString()}
                 </StyledTableCell>
-                <StyledTableCell align="right">
+                <StyledTableCell data-testid="test-endTime-cell" align="right">
                   {activity.endTime?.toLocaleString()}
                 </StyledTableCell>
                 <StyledTableCell data-testid="test-duration-cell" align="right">

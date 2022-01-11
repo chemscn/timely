@@ -34,6 +34,8 @@ export const TimeForm = ({ onSave, onClearStorage }: TimeFormProps) => {
     if (event.target.value) {
       const inputValue = event.target.value as string;
       setDescription(inputValue);
+    } else {
+      setDescription("");
     }
   };
 
